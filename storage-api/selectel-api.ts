@@ -1,5 +1,5 @@
 import { S3Client, S3ClientConfig, GetObjectCommand } from '@aws-sdk/client-s3';
-import { StorageApi, StorageObject } from './storage-api';
+import { StorageApi, StorageObject } from '../types';
 
 const client = new S3Client({
     credentials: {

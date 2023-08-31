@@ -1,5 +1,6 @@
 import { S3Client, S3ClientConfig, GetObjectCommand, PutObjectCommand } from '@aws-sdk/client-s3';
 import { StorageApi, StorageObject, PutResult } from '../types';
+import { ReadStream } from 'fs';
 
 const client = new S3Client({
     credentials: {
@@ -42,12 +43,30 @@ export class SelectelStorageApi implements StorageApi {
             return {
                 status: 'OK'
             };
-        } catch (error) {
+        } catch (error: any) {
             return {
                 status: 'FAILED',
                 error: error
             };
         }
+    }
+
+    createPath(...path: string[]): string {
+        const result = [];
+        for (const segment of path) {
+            let start = 0
+            let end = undefined;
+            if (segment.startsWith('/')) {
+                start = 1;
+            }
+            if (segment.endsWith('/')) {
+                end = segment.length - 2;
+            }
+            const resultSegment = segment.slice(start, end);
+            result.push(resultSegment);
+        }
+        
+        return result.join('/');
     }
 
 }

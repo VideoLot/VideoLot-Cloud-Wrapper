@@ -1,15 +1,21 @@
-export enum ServiceProvider {
+import { ReadStream } from "fs";
+
+ export enum ServiceProvider {
     Local = 'local',
     Selectel = 'selectel'
 }
 
 export interface StorageApi {
     getObject(uri: string): Promise<StorageObject>
-    putObject(stream: ReadableStream, uri: string): Promise<PutResult>;
+    putObject(stream: ReadStream | ReadableStream, uri: string): Promise<PutResult>
+    /*
+    * return platform specific absolute path
+    */
+    createPath(...path: string[]): string;
 }
 
 export type StorageObject = {
-    stream: ReadableStream<Buffer>,
+    stream: ReadableStream,
     contentLength: number
 }
 

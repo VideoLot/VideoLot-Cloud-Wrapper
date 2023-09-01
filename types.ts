@@ -5,9 +5,12 @@ import { ReadStream } from "fs";
     Selectel = 'selectel'
 }
 
+export type PutObjectData = ReadStream | ReadableStream | ArrayBuffer;
+export type S3CompatibleTypes = ReadStream | ReadableStream | Uint8Array;
+
 export interface StorageApi {
     getObject(uri: string): Promise<StorageObject>
-    putObject(stream: ReadStream | ReadableStream, uri: string): Promise<PutResult>
+    putObject(data: PutObjectData, uri: string): Promise<PutResult>
     /*
     * return platform specific absolute path
     */

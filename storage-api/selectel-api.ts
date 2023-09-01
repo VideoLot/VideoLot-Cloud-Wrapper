@@ -1,6 +1,5 @@
 import { S3Client, S3ClientConfig, GetObjectCommand, PutObjectCommand } from '@aws-sdk/client-s3';
-import { StorageApi, StorageObject, PutResult } from '../types';
-import { ReadStream } from 'fs';
+import { StorageApi, StorageObject, PutResult, PutObjectData, S3CompatibleTypes } from '../types';
 
 const client = new S3Client({
     credentials: {
@@ -31,11 +30,16 @@ export class SelectelStorageApi implements StorageApi {
         };   
     }
 
-    async putObject(stream: ReadableStream, uri: string): Promise<PutResult> {
+    async putObject(data: PutObjectData, uri: string): Promise<PutResult> {
+        let stream = data;
+        if (data instanceof ArrayBuffer) {
+            stream = new Uint8Array(data);
+        }
+
         const putObjectCommand = new PutObjectCommand({
             Bucket: BUCKET_NAME,
             Key: uri,
-            Body: stream
+            Body: stream as S3CompatibleTypes
         });
 
         try {

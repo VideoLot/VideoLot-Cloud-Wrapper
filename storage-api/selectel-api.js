@@ -39,8 +39,12 @@ class SelectelStorageApi {
             };
         });
     }
-    putObject(stream, uri) {
+    putObject(data, uri) {
         return __awaiter(this, void 0, void 0, function* () {
+            let stream = data;
+            if (data instanceof ArrayBuffer) {
+                stream = new Uint8Array(data);
+            }
             const putObjectCommand = new client_s3_1.PutObjectCommand({
                 Bucket: BUCKET_NAME,
                 Key: uri,

@@ -1,21 +1,17 @@
 {
-  "name": "videolee-cloud-wrapper",
+  "name": "@videolot/videolot-cloud-wrapper",
   "version": "1.0.0",
-  "description": "wrapper of cloud provider api's for Videolee project",
+  "description": "wrapper of cloud provider api's for VideoLot project",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/Sukhov-Alexey/Videolee-Cloud-Wrapper.git"
+    "url": "git+ssh://git@github.com:VideoLot/VideoLot-Cloud-Wrapper.git"
   },
   "author": "Alexey Sukhov",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Sukhov-Alexey/Videolee-Cloud-Wrapper/issues"
-  },
-  "homepage": "https://github.com/Sukhov-Alexey/Videolee-Cloud-Wrapper#readme",
   "devDependencies": {
     "@types/node": "^20.5.1",
     "ts-node": "^10.9.1",

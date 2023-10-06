@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "wrapper of cloud provider api's for VideoLot project",
   "main": "index.js",
+  "types": "index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

@@ -1,6 +1,6 @@
 {
   "name": "@videolot/videolot-cloud-wrapper",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "wrapper of cloud provider api's for VideoLot project",
   "main": "index.js",
   "types": "index.d.ts",
